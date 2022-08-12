@@ -140,7 +140,7 @@ router.delete("/:id", (req, res) => {
       con.query(sql, user, (err, result) => {
         if (err) throw err;
         console.log(result);
-        res.send(`User ${(user.full_name, user.email)} created successfully`);
+        res.send(`user ${(user.full_name, user.email)} created successfully`);
       });
     } catch (error) {
       console.log(error);
