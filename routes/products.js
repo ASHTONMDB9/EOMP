@@ -66,8 +66,8 @@ router.get("/:id", (req, res) => {
 
 
   // Add new products
-  router.post("/", middleware, (req, res) => {
-    if(req.user.user_type === "Admin") {
+  router.post("/add_product", (req, res) => {
+    // if(req.user.user_type === "Admin") {
     // the below allows you to only need one const, but every input required is inside of the brackets
     const {
       title,
@@ -98,10 +98,11 @@ router.get("/:id", (req, res) => {
     } catch (error) {
       console.log(error);
       res.status(400).send(error);
-    }}else{
-      res.send("Not an Admin, access denied!");
-    } 
-  });
+    }}
+    // else{
+  //     res.send("Not an Admin, access denied!");
+  //   } 
+ );
   
   // Delete one products
   router.delete("/:id",middleware, (req, res) => {
