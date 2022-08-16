@@ -8,14 +8,13 @@ const app = express(); // Initialize express as an app variable
 app.set("port", process.env.PORT || 6969); // Set the port
 app.use(express.json()); // Enable the server to handle JSON requests
 app.use(cors()); // Dont let local development give errors
+app.use(express.static('public')); 
+
+//Serves all the request which includes /images in the url from Images folder 
+app.use('/index.html', express.static(__dirname + '/index.html'));
 
 app.get("/", (req, res) => {
-    res.json({ msg: `Routes are simple and easy to use.
-    routes:
-    user route add: /users
-    product route add: /products
-    specific id user route add: /users/the id of the user
-    specific id product route add: /products/the id of the product`});
+    res.sendFile(__dirname + "/" + "index.html");
 });
 
 app.use('/users', require('./routes/users'))
