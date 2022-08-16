@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
 
 
   router.put("/:id",middleware, (req, res) => {
-    if(req.user.user_type === "Admin") {
+    // if(req.user.user_type === "Admin") {
     // the below allows you to only need one const, but every input required is inside of the brackets
     const {
         title,
@@ -59,10 +59,11 @@ router.get("/:id", (req, res) => {
     } catch (error) {
       console.log(error);
       res.status(400).send(error);
-    }}else{
-      res.send("Not an Admin, access denied!");
-    } 
-  });
+    }}
+    // else{
+    //   res.send("Not an Admin, access denied!");
+    // } 
+  );
 
 
   // Add new products
@@ -106,7 +107,7 @@ router.get("/:id", (req, res) => {
   
   // Delete one products
   router.delete("/:id",middleware, (req, res) => {
-    if(req.user.user_type === "Admin") {
+    // if(req.user.user_type === "Admin") {
       try {
         con.query(`DELETE FROM products WHERE id = ${req.params.id}`, (err, result) => {
           if (err) throw err;
@@ -116,10 +117,11 @@ router.get("/:id", (req, res) => {
       } catch (error) {
         console.log(error);
         res.status(400).send(error);
-      }}else{
-        res.send("Not an Admin, access denied!");
-      } 
-    });
+      }}
+      // else{
+      //   res.send("Not an Admin, access denied!");
+      //  } 
+    );
 
 
 module.exports = router;

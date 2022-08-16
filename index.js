@@ -10,7 +10,12 @@ app.use(express.json()); // Enable the server to handle JSON requests
 app.use(cors()); // Dont let local development give errors
 
 app.get("/", (req, res) => {
-    res.json({ msg: "Something" });
+    res.json({ msg: `Routes are simple and easy to use.
+    routes:
+    user route add: /users
+    product route add: /products
+    specific id user route add: /users/the id of the user
+    specific id product route add: /products/the id of the product`});
 });
 
 app.use('/users', require('./routes/users'))
